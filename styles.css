@@ -1,7 +1,7 @@
 .survey-form-field {
   background-color: red;
-  font-weight: 800;
-  
+  font-weight: 800!important;
+  text-align:left;!important
 }
 
 .live-form-content {
@@ -9,10 +9,10 @@
 }
 
 textarea {
-  background-color: black;
+  background-color: black!important;
 }
   
 #kampyleForm5926 {
   font-weight: 1000;
-  background-color: yellow;
+  background-color: yellow!important;
 }
