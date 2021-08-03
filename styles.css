@@ -1,4 +1,14 @@
 .survey-form-field {
   background-color: red;
   font-weight: 800;
+  
 }
+
+.live-form-content {
+  background-color: red;
+}
+
+textarea {
+  background-color: black;
+}
+  
