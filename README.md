@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+steps to run the app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. npm i
+2. npm start
 
-## Available Scripts
+Functionality:
 
-In the project directory, you can run:
+1. only being able to book a session at a time, if wanting to book multiple session, have to finish one and click "Schedule another Appointment" button on the confirmation page to start another one, all booked sessions will be saved only in client end.
 
-### `npm start`
+2. booked time slots are saved, can't book multiple sessions at the same time slots of the same day.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+3. no state management libs are used here, only local states at the root component level are used as the global states
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+4. states structure
 
-### `npm test`
+4.1 sessionState: points to step one
+    {
+        [bookedDateTimeInNumberFormat]: [indexOfTimeSlots]
+    }
+each day available time period is from 10am to 4pm, every 30 minutes as a slot, so there are 12 slots in a single day, indexOfTimeSlots starts from 0 to 11
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4.2 demographicState: poinst to step two
+    {
+        [fieldName]: value
+    }
+fieldName includes: firstName, lastName, phone and email
 
-### `npm run build`
+4.3 Schedule another Appointment state
+scheduleAnotherState: points to booking history
+    {
+        history: [sessionState]
+    }
+scheduleAnotherState is used to make sure already booked time slots are not available to next bookings, will grey out the the slots selection in UI
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+5. TODO
+5.1 Code refactoring on step 2, refacotr form generating process
+5.2 Unit test to be added
+5.3 styling to be made better
+5.4 confirmation page
