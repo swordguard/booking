@@ -1,4 +1,5 @@
-import Session from "../components/Session"
+import {Sessions, BookedSessions} from "../components/Sessions"
+
 
 const steps = [
     {
@@ -6,14 +7,15 @@ const steps = [
         name: 'chooseAppointment',
         label: 'Choose Appointment',
         isFirstStep: true,
-        component: Session,
+        component: Sessions,
         navigatorButtonLabel: 'Continue'
     },
     {
         id: 2,
         name: 'yourInfo',
         label: 'Your Info',
-        // component: Session,
+        component: BookedSessions,
+        backButtonLabel: '< change',
         navigatorButtonLabel: 'Complete Appointment',
     },
     {

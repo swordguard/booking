@@ -1,25 +1,32 @@
 import React from  'react'
 import steps from '../configs/steps'
 
-const ArrowRight = () => {
-    return <div class="arrow-right"></div>
-}
+// const ArrowRight = () => {
+//     return <div class="arrow-right"></div>
+// }
 
 const StepBar = ({label, isFirstStep, isLastStep, isCurrent}) => {
     const classes = (isCurrent ? 'current-step' : '') +  ' centered stepbar'
     return (
-        <div className={classes}>
-            {!isFirstStep && <ArrowRight />}
-            {label}
-            {!isLastStep && <ArrowRight />}
-        </div>
+        <span className={classes}>
+            {/* {!isFirstStep && <ArrowRight />} */}
+            <div>{label}</div>
+            {/* {!isLastStep && <ArrowRight />} */}
+        </span>
     )
 }
-const ProgressBar = () => {
+
+const renderProgressBar = () => {
     return steps.map(step => {
         const  {id} = step
         return <StepBar key={id} {...step}/>
     })
+}
+const ProgressBar = () => {
+    return <div className='progress-bar flex-center'>
+        {renderProgressBar()}
+    </div>
+       
 }
 
 export default ProgressBar

@@ -1,12 +1,33 @@
-.App {
+.app {
   text-align: center;
+  max-width: 1000px;
+  padding: 50px 50px;
+}
+.flex {
+  display: flex;
 }
 .flex-space-between {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
 .centered {
   text-align: center;
+}
+.left {
+  text-align: left;
+}
+.bold {
+  font-weight: bold;
+}
+.progress-bar {
+  margin: 30px 0;
 }
 .current-step {
   border-bottom: solid black;
@@ -15,11 +36,48 @@
 .arrow-right {
   width: 0; 
   height: 0; 
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  border-left: 6px solid green;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 15px solid green;
 }
 
 .stepbar {
-  border: 1px solid gray
+  border: 1px solid gray;
+  width: 33%;
+  max-width: 300px;
+  padding: 10px;
+}
+
+.session-container {
+  width: 100%;
+  margin-bottom: 20px;
+}
+@media screen and (min-width:768px) {
+  .session-container {
+    width: 600px;
+  }
+}
+
+
+.session {
+  /* max-width: 500px; */
+  border: 1px solid black;
+  padding: 20px;
+}
+
+fieldset {
+  border: none;
+}
+
+.strikethrough {
+  text-decoration: line-through
+}
+
+div.react-datepicker__day
+{
+  width: 3rem;
+}
+.form-body {
+  flex-direction: column;
+  align-items: center;
 }
