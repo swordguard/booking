@@ -1,5 +1,6 @@
-import {Sessions, BookedSessions} from "../components/Sessions"
-import {Demographics} from '../components/Demographics'
+import {Sessions} from "../components/Sessions"
+import {DemographicsWithSession} from '../components/Demographics'
+import {Confirmation} from '../components/Confirmation'
 
 const steps = [
     {
@@ -14,8 +15,7 @@ const steps = [
         id: 2,
         name: 'yourInfo',
         label: 'Your Info',
-        component: Demographics,
-        backButtonLabel: '< change',
+        component: DemographicsWithSession,
         navigatorButtonLabel: 'Complete Appointment',
     },
     {
@@ -23,6 +23,7 @@ const steps = [
         name: 'confirmation',
         label: 'Confirmation',
         isLastStep: true,
+        component: Confirmation,
         navigatorButtonLabel: 'Reschedule'
     }
 ]

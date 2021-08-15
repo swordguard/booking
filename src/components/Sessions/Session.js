@@ -15,7 +15,7 @@ const SessionTitle = ({sessionName, price}) => {
     )
 }
 
-const Session = ({openedSession, setOpenedSession,bookedSession, name, price, onDateSelect, onTimeSelect, dispatch, state}) => {
+const Session = ({openedSession, setOpenedSession,bookedSession, occupiedSlots, name, price, onDateSelect, onTimeSelect, dispatch, state}) => {
     const [showDownArrow, setShowDownArrow] = useState(false);
     const onSessionTittleClick = () => {
         setShowDownArrow(!showDownArrow)
@@ -36,6 +36,7 @@ const Session = ({openedSession, setOpenedSession,bookedSession, name, price, on
         </div>
         {showDownArrow && <MyDateAndTimePicker
             bookedSession={bookedSession}
+            occupiedSlots={occupiedSlots}
             onDateSelect={onDateSelect}
             onTimeSelect={onSessionTimeSelect(name)}
             dispatch={dispatch}
@@ -46,10 +47,10 @@ const Session = ({openedSession, setOpenedSession,bookedSession, name, price, on
     </div>
 }
 
-export const Sessions = ({state, dispatch}) => {
+export const Sessions = ({state, dispatch, scheduleAnotherState}) => {
     const [openedSession, setOpenedSession] = useState()
+    const [occupiedSlots, setOccupiedSlots] = useState()
     const onTimeSelect = ({sessionName, label, index, selectedDate}) => {
-        console.log('onTimeSelect', sessionName,label, index, selectedDate)
         dispatch({
             type: 'UPDATE_TIME', 
             payload: {
@@ -64,12 +65,25 @@ export const Sessions = ({state, dispatch}) => {
     }
 
     
-    const bookedSession = checkIfSessionIsBooked(state)
+    const bookedSession = checkIfSessionIsBooked(state)[0]
     useEffect(() => {
         if (bookedSession) {
             setOpenedSession(bookedSession.sessionName)
         }
     }, [])
+
+    useEffect(() => {
+        if (scheduleAnotherState && scheduleAnotherState.history) {
+            const historyState = scheduleAnotherState.history
+            const occupiedSessions = checkIfSessionIsBooked(historyState)
+            if (Array.isArray(occupiedSessions)) {
+                const slots = occupiedSessions.map(({bookedDate, timeSlot}) => ({[bookedDate]: timeSlot}))
+                setOccupiedSlots(slots)
+            }
+        }
+    }, [])
+
+    
     
     return <div className='flex-center form-body'>
     {
@@ -79,6 +93,7 @@ export const Sessions = ({state, dispatch}) => {
                 openedSession={openedSession}
                 setOpenedSession={setOpenedSession}
                 bookedSession={bookedSession}
+                occupiedSlots={occupiedSlots}
                 onTimeSelect={onTimeSelect}
                 onDateSelect={onDateSelect}
                 state={state}

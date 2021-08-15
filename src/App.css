@@ -1,7 +1,7 @@
 .app {
   text-align: center;
   max-width: 1000px;
-  padding: 50px 50px;
+  padding: 50px 10px;
 }
 .flex {
   display: flex;
@@ -56,6 +56,19 @@
   .session-container {
     width: 600px;
   }
+  .app {
+    padding: 50px 50px;
+  }
+  .name-field {
+    display: flex;
+  }
+  .first-name {
+    width: 30%;
+    margin-right: 5%;
+  }
+  .last-name {
+    width: 65%;
+  }
 }
 
 
@@ -69,7 +82,7 @@ fieldset {
   border: none;
 }
 
-.strikethrough {
+.strikethrough, .disabled-radio {
   text-decoration: line-through
 }
 
@@ -80,9 +93,36 @@ div.react-datepicker__day
 .form-body {
   flex-direction: column;
   align-items: center;
+  padding: 30px;
+    text-align: left;
 }
 
 /* Step 2 */
 .text-input {
+  padding: 5px 10px;
+  width: 95%;
+  border-radius: 3px;
+  border: 1px solid gray;
+}
+
+.demographics {
+  padding: 10px 0;
+}
+
+.line-input {
+  margin: 20px 0;
+}
+
+.field-label {
+  font-weight: 500;
+}
+
+.error {
+  color: red;
+}
+
+.line-input-error {
+  background-color: rgb(238, 195, 195);
+  border-radius: 3px;
   padding: 5px 10px;
 }

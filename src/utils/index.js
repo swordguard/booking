@@ -23,23 +23,31 @@ export const getTimeLabelValue = (i) => {
 }
 
 export const checkIfSessionIsBooked = (state) => {
-    const bookedSessionDate = Object.keys(state)
-    const bookedSession = Object.values(state)
+    const bookedSessionDates = Object.keys(state)
     // ['168932165979']
+    const bookedSessions = Object.values(state)
     // [{0: "Physiotheropy"}]
-    if (bookedSessionDate.length === 0 || bookedSession.length === 0) {
+    if (bookedSessionDates.length === 0 || bookedSessions.length === 0) {
         return false
     }
-    const bookedDate = bookedSessionDate[0]
-    const timeSlot = Object.keys(bookedSession[0])[0]
-    const sessionName = Object.values(bookedSession[0])[0]
-    if (bookedDate) {
+    return bookedSessionDates.map(date => {
+        const valueObj = state[date]
+        const timeSlot = Object.keys(valueObj)[0]
+        const sessionName = Object.values(valueObj)[0]
         return {
-            bookedDate,
+            bookedDate: date,
             timeSlot,
             sessionName,
         }
-    }
-
-    return false
+    })
+    // const bookedDate = bookedSessionDates[0]
+    // const timeSlot = Object.keys(bookedSession[0])[0]
+    // const sessionName = Object.values(bookedSession[0])[0]
+    // if (bookedDate) {
+    //     return {
+    //         bookedDate,
+    //         timeSlot,
+    //         sessionName,
+    //     }
+    // }
 }

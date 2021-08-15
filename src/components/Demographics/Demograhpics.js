@@ -1,3 +1,4 @@
+import {BookedSessions} from '../Sessions'
 
 const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -117,24 +118,43 @@ export const Demographics = ({demographicState, demoDispatch}) => {
         }
     }
 
+    const nameClass = (firstNameError || lastNameError ? ' line-input-error' : '') + ' line-input' 
+    const emailClass = (emailError ? ' line-input-error' : '') + ' line-input' 
     return (
-        <div>
-            <div>
-                <div>Name *</div>
-                <div><input className='text-input' onChange={onFristNameChange} onBlur={onFirstNameBlur} placeholder='First Name' value={firstName}/></div>
-                {firstNameError && <div>{firstNameError}</div>}
-                <div><input className='text-input' onChange={onLastNameChange} onBlur={onLastNameBlur} placeholder='Last Name' value={lastName}/></div>
-                {lastNameError && <div>{lastNameError}</div>}
+        <div className='demographics'>
+            <div className={nameClass}>
+                <div className='field-label'>Name *</div>
+                <div className='name-field'>
+                    <div className="first-name"><input className='text-input' onChange={onFristNameChange} onBlur={onFirstNameBlur} placeholder='First Name' value={firstName}/>{firstNameError && <div className='error'>{firstNameError}</div>}</div>
+                    
+                    <div className="last-name"><input className='text-input' onChange={onLastNameChange} onBlur={onLastNameBlur} placeholder='Last Name' value={lastName}/>{lastNameError && <div className='error'>{lastNameError}</div>}</div>
+                    
+                </div>
+                
             </div>
-            <div>
-                <div>Phone</div>
+            <div className='line-input'>
+                <div className='field-label'>Phone</div>
                 <div><input className='text-input' onChange={onPhoneChange} placeholder='Phone' value={phone}/></div>
             </div>
-            <div>
-                <div>Email *</div>
+            <div className={emailClass}>
+                <div className='field-label'>Email *</div>
                 <div><input className='text-input' onChange={onEmailChange} onBlur={onEmailBlur} placeholder='Email' value={email}/></div>
-                {emailError && <div>{emailError}</div>}
+                {emailError && <div className='error'>{emailError}</div>}
             </div>
+        </div>
+    )
+}
+
+const ChangeLink = ({onClick}) => {
+    return <a onClick={onClick} href="#" alt="change">&lt; change</a>
+}
+
+export const DemographicsWithSession = props => {
+    return (
+        <div className='form-body'>
+            <BookedSessions {...props}/>
+            <ChangeLink onClick={props.onBackClick}/>
+            <Demographics {...props} />
         </div>
     )
 }

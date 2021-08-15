@@ -10,6 +10,11 @@ export const BookedSessions = (props) => {
             const time = getTimeLabelValue(timeSlot)
             const date = `${formatDate(new Date(Number(key)))} ${time}` 
             return <div key={key+timeSlot}>{sessionName} {date}</div>
+            return {
+                sessionName,
+                date,
+                time,
+            }
         })
 }
 
