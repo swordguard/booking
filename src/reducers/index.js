@@ -1,5 +1,5 @@
 
-const dateReducer = (state, action) => {
+export const sessionReducer = (state, action) => {
     const {payload, type} = action
   switch (type) {
     case 'UPDATE_DATE':
@@ -18,4 +18,30 @@ const dateReducer = (state, action) => {
   }
 }
 
-export default dateReducer
+export const demographicReducer = (state, action) => {
+  const {payload: {field, value, message} = {}, type} = action
+  switch (type) {
+    case 'UPDATE_DEMO':
+      return {
+        ...state,
+        [field]: value
+    };
+    case 'UPDATE_DEMO_ERROR':
+      return {
+        ...state,
+        errors: {
+          ...state.errors,
+          [field]: message,
+        }
+    };
+    case 'CLEAR_DEMO_ERROR':
+      const errors = state.errors
+      delete errors[field]
+      return {
+        ...state,
+        errors
+    };
+    default:
+      throw new Error();
+  }
+}

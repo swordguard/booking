@@ -5,8 +5,8 @@ import steps from '../configs/steps'
 //     return <div class="arrow-right"></div>
 // }
 
-const StepBar = ({label, isFirstStep, isLastStep, isCurrent}) => {
-    const classes = (isCurrent ? 'current-step' : '') +  ' centered stepbar'
+const StepBar = ({label, isFirstStep, isLastStep, isCurrent, id, stepId}) => {
+    const classes = (id === stepId ? 'current-step' : '') +  ' centered stepbar'
     return (
         <span className={classes}>
             {/* {!isFirstStep && <ArrowRight />} */}
@@ -16,15 +16,15 @@ const StepBar = ({label, isFirstStep, isLastStep, isCurrent}) => {
     )
 }
 
-const renderProgressBar = () => {
+const renderProgressBar = ({stepId}) => {
     return steps.map(step => {
         const  {id} = step
-        return <StepBar key={id} {...step}/>
+        return <StepBar key={id} {...step} stepId={stepId}/>
     })
 }
-const ProgressBar = () => {
+const ProgressBar = ({stepId}) => {
     return <div className='progress-bar flex-center'>
-        {renderProgressBar()}
+        {renderProgressBar({stepId})}
     </div>
        
 }

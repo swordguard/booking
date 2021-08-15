@@ -1,5 +1,5 @@
 import {Sessions, BookedSessions} from "../components/Sessions"
-
+import {Demographics} from '../components/Demographics'
 
 const steps = [
     {
@@ -14,7 +14,7 @@ const steps = [
         id: 2,
         name: 'yourInfo',
         label: 'Your Info',
-        component: BookedSessions,
+        component: Demographics,
         backButtonLabel: '< change',
         navigatorButtonLabel: 'Complete Appointment',
     },

@@ -37,9 +37,10 @@ const MyDatePicker = ({startDate, onDatePickerChange}) => {
     );
 };
 
-const MyDateAndTimePicker = ({ onDateSelect, onTimeSelect, dispatch, bookedSession }) => {
+const MyDateAndTimePicker = ({ sessionName, onDateSelect, onTimeSelect, dispatch, bookedSession }) => {
     console.log(111, bookedSession.bookedDate, Number(bookedSession.bookedDate))
-    const [startDate, setStartDate] = useState(bookedSession ? new Date(Number(bookedSession.bookedDate)) : new Date());
+    const [startDate, setStartDate] = useState(bookedSession && bookedSession.sessionName === sessionName
+         ? new Date(Number(bookedSession.bookedDate)) : new Date());
     const [timeSlot, setTimeSlot] = useState();
     const onDatePickerChange = (dateSelected) => {
         onDateSelect(dateSelected)
@@ -54,7 +55,9 @@ const MyDateAndTimePicker = ({ onDateSelect, onTimeSelect, dispatch, bookedSessi
 
     useEffect(() => {
         if (bookedSession) {
-            setTimeSlot(bookedSession.timeSlot)
+            if (bookedSession.sessionName === sessionName) {
+                setTimeSlot(bookedSession.timeSlot)
+            }
         }
     }, [])
     
