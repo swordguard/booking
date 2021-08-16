@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from  'react'
 import DatePicker from "react-datepicker";
-import {formatDateToNumber, availableTimeSlots, getTimeLabelValue, formatDate} from '../../utils'
+import {formatDateToNumber, availableTimeSlots, getTimeLabelValue} from '../../utils'
 
 const TimeRangeSelection = ({onTimeSelect, timeSlot, disabledSlots = []}) => {
     return (
@@ -91,8 +91,6 @@ const MyDateAndTimePicker = ({ occupiedSlots, scheduleAnotherState, sessionName,
         }
     }, [occupiedSlots, startDate])
 
-    // console.log('disabledSlots in render', occupiedSlots, disabledSlots)
-    
     return (
         <>
             <MyDatePicker onDatePickerChange={onDatePickerChange} dispatch={dispatch} startDate={startDate}/>

@@ -33,7 +33,13 @@ scheduleAnotherState: points to booking history
 scheduleAnotherState is used to make sure already booked time slots are not available to next bookings, will grey out the the slots selection in UI
 
 5. TODO
-5.1 Code refactoring on step 2, refacotr form generating process
-5.2 Unit test to be added
-5.3 styling to be made better
-5.4 confirmation page
+5.1 Code refactoring on step 2, refacotr demographic form generating process
+5.2 styling to be made better
+5.3 confirmation page
+5.4 fix warnings in console
+
+6. Anything else
+may use useContext() from react to replace current props drilling which might be cumbersome.
+
+7. Testing
+just run 'npm test'

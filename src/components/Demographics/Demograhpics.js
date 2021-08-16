@@ -146,7 +146,7 @@ export const Demographics = ({demographicState, demoDispatch}) => {
 }
 
 const ChangeLink = ({onClick}) => {
-    return <a onClick={onClick} href="#" alt="change">&lt; change</a>
+    return <button onClick={onClick} >&lt; change</button>
 }
 
 export const DemographicsWithSession = props => {

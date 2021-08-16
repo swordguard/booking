@@ -5,7 +5,7 @@ import steps from './configs/steps';
 import {sessionReducer, demographicReducer, scheduleAnotherReducer} from './reducers';
 
 const NavigationButton = ({onNextClick, label, disable}) => {
-  return <button disable={disable} onClick={onNextClick}>{label}</button>
+  return <button disable={String(disable)} onClick={onNextClick}>{label}</button>
 }
 
 const BackButton = ({onBackClick, label}) => {
