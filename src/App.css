@@ -2,6 +2,7 @@
   text-align: center;
   max-width: 1000px;
   padding: 50px 10px;
+  margin: auto;
 }
 .flex {
   display: flex;
