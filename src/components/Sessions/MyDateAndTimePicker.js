@@ -15,8 +15,8 @@ const TimeRangeSelection = ({onTimeSelect, timeSlot, disabledSlots = []}) => {
                         const disabled = disabledSlots.includes(String(i))
                         return <div key={i} className={disabled ? 'disabled-radio' : ''}>
                                 {Number(timeSlot) === i ?
-                                    <input type='radio' key={i} id={i} checked  onChange={change} name="group" value={timeLabel}/> :
-                                    <input type='radio' key={i} id={i} disabled={disabled} onChange={change} name="group" value={timeLabel}/>    
+                                    <input type='radio' key={i} id={i} checked  onChange={change} name="group" value={i}/> :
+                                    <input type='radio' key={i} id={i} disabled={disabled} onChange={change} name="group" value={i}/>    
                                 }
                                 <label htmlFor={i}>{timeLabel}</label>
                         </div>

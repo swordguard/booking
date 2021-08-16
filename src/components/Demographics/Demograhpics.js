@@ -20,7 +20,7 @@ const onFieldBlur = ({dispatch, payload, type}) => {
 }
 
 export const Demographics = ({demographicState, demoDispatch}) => {
-    const {firstName, lastName, phone, email, errors} = demographicState
+    const {firstName = '', lastName = '', phone = '', email = '', errors = ''} = demographicState
     const firstNameError = errors?.firstName
     const lastNameError = errors?.lastName
     const emailError = errors?.email
