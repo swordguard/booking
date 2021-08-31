@@ -1,24 +1,24 @@
-import {BookedSessions} from '../Sessions'
+import { BookedSessions } from "../Sessions";
 
 export const Confirmation = (props) => {
-    
-    const {state, setStepId, dispatch, scheduleAnotherDispatch} = props
+  const { state, setStepId, dispatch } = props;
 
-    const onScheduleAnotherClick = () => {
-        setStepId(1)
-        scheduleAnotherDispatch({
-            type: 'SCHEDULE_ANOTHER',
-            payload: state
-        })
-        dispatch({
-            type: 'CLEAR',
-        })
-    }
-    return (
-        <div>
-
-        <BookedSessions {...props}/>
-        <button onClick={onScheduleAnotherClick}>Schedule another Appointment &gt;</button>
-        </div>
-    )
-}
+  const onScheduleAnotherClick = () => {
+    setStepId(1);
+    dispatch({
+      type: "SCHEDULE_ANOTHER",
+      payload: state,
+    });
+    // dispatch({
+    //   type: "CLEAR",
+    // });
+  };
+  return (
+    <div>
+      <BookedSessions />
+      <button onClick={onScheduleAnotherClick}>
+        Schedule another Appointment &gt;
+      </button>
+    </div>
+  );
+};
