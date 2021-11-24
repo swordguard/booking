@@ -5,7 +5,7 @@ steps to run the app
 2. npm start
 
 
-Functionality:
+Functionalities:
 
 1. only being able to book a session at a time, if wanting to book multiple session, have to finish one and click "Schedule another Appointment" button on the confirmation page to start another one, all booked sessions will be saved only in client end.
 
